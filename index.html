@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gourmet Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">Gourmet<span>Finder</span></h1>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <img
+        src="https://images.pexels.com/photos/5701890/pexels-photo-5701890.jpeg"
+        alt="Hero Image"
+      />
+
+      <div class="hero-content">
+        <h2>
+          Search For Your <br />
+          Favorite Dish
+        </h2>
+        <p>Search for your favorite dish and let us help you prepare it.</p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="search">
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for recipes..."
+          />
+          <button id="search-button" aria-label="Search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="main-title">
+        <h1>Latest Recipes</h1>
+      </div>
+
+      <section class="results-section">
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Loading recipes...</p>
+        </div>
+
+        <!-- Error message -->
+        <div id="error-message" class="error-message hidden">
+          <div class="error-icon">😕</div>
+          <h2>No recipes found</h2>
+          <p>
+            We couldn't find any recipes matching your search. Try another
+            ingredient or dish name.
+          </p>
+        </div>
+
+        <!-- Recipe grid -->
+        <div id="recipe-grid" class="recipe-grid"></div>
+      </section>
+    </main>
+
+    <!-- Modal for Recipe Details -->
+    <div id="recipe-modal" class="modal hidden">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <!-- Modal loader -->
+        <div id="modal-loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Loading recipe details...</p>
+        </div>
+
+        <!-- Recipe details -->
+        <div id="modal-body" class="modal-body"></div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button id="close-modal" class="btn-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Footer copyright -->
+        <div class="footer-copyright">
+          <p>&copy; 2024 Gourmet Finder. All rights reserved.</p>
+        </div>
+
+        <!-- Footer socials -->
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button
+      id="scroll-to-top"
+      class="scroll-to-top hidden"
+      aria-label="Scroll to top"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
